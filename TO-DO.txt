@@ -1,0 +1,19 @@
+
+
+[Refactor: Merge authz_resource_file into authz_resource core]
+This will mean that authz_resource will ship with a default provider as standard, the file provider.
+
+[Bug: HTTPD Segfaults when file provider config options are not separated by colon]
+httpd segfaults when the file config options are not separated by a colon ":'. Fix this.
+
+[Refactor: File provider config options are in non-standard format]
+Modify the file conig options to better match the standard apache config file conventions. 
+Remove use of colon to separate options. Suggestions include:
+
+Owner ben GET PUT POST
+Group admin GET PUT
+World GET 
+
+Where Owner and Group use the first argument to specify the username and group.
+
+
