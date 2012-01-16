@@ -1,5 +1,4 @@
 
-
 [Refactor: Merge authz_resource_file into authz_resource core]
 This will mean that authz_resource will ship with a default provider as standard, the file provider.
 
@@ -16,4 +15,15 @@ World GET
 
 Where Owner and Group use the first argument to specify the username and group.
 
+[Feature: Add directives to allow setting permissions on a Location, File or Directory without the file or dbd providers]
+The server admin should be able to add permissions to Locations, Files and directories without having to resort to 
+setting up the file provider or configuring a database server.
 
+Example:
+<Location /admin>
+  AuthType Resource
+  AuthzResourcePerms owner ben GET PUT POST DELETE
+  AuthzResourcePerms group admin GET POST
+  AuthzResourcePerms world GET
+  Require resource
+</Location>
